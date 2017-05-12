@@ -17,3 +17,7 @@ TODO: Describe any configuration attributes the plugin exposes.
 ## Usage
 
 TODO: Describe the plugin's features and how to use them.
+
+## License
+
+This project is licensed under Copy Right - see the [LICENSE](LICENSE) file for details
