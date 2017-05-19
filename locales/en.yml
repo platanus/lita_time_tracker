@@ -1,20 +1,2 @@
 en:
-  lita:
-    handlers:
-      watering_reminder:
-        help:
-          add_to_waterers:
-            usage: el que riega los [dia] en la [mañana|tarde] es [usuario]
-            description: Configura quien es el jardinero designado para el [dia] en horario [mañana|tarde]
-          waterers_list: 
-            usage: quienes riegan?
-            description: Muestra la lista de los encargados de regar y qué dia les toca
-          remove_from_waterers:
-            usage: "[usuario] ya no quiere regar mas"
-            description: Elimina al usuario de sus responsabilidades con el riego
-          add_me_to_waterers:
-            usage: "voy a regar los [dia] en la [mañana|tarde]"
-            description: Inscribe al usuario que escribe el comando para el calendario de riego
-          refresh:
-            usage: "refresh"
-            description: Muestra el mensaje de quien es próximo al que le toca regar
+  hello: "Hello World"
