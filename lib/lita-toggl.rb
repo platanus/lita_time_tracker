@@ -14,3 +14,5 @@ Lita::Handlers::Toggl.template_root File.expand_path(
   File.join("..", "..", "templates"),
   __FILE__
 )
+
+I18n.locale = "es-CL"

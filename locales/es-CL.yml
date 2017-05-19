@@ -1,0 +1,9 @@
+es-CL:
+  user_time_entry:
+    unkwnown: ":confused:"
+    entry_not_found: ":confused: Creo que no hay nadie el Platanus con ese nombre"
+    active_msg:
+      main: "• *%{owner}* está toggleando :slightly_smiling_face:\n>*Proyecto:* %{project_name}\n>*Tarea:* %{description}\n>%{started_at}"
+      time: "Desde las *%{time}* de hoy"
+      date: "Desde el día *%{date}* a las *%{time}*"
+    inactive_msg: "• *%{owner}* no está toggleando en este momento :disappointed:"
