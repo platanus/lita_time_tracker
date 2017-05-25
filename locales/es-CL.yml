@@ -1,4 +1,20 @@
 es-CL:
+  lita:
+    handlers:
+      watering_reminder:
+        help:
+          general_activity:
+            usage: "me muestras la actividad en toggl?"
+            description: "Muestra un listado con información sobre lo que se está toggleando en este momento"
+          active_users:
+            usage: "quienes togglean?"
+            description: "Muestra un listado de usuarios que están toggleando en este momento"
+          inactive_users:
+            usage: "quienes no togglean?"
+            description: "Muestra un listado de usuarios que no están toggleando en este momento"
+          inactive_users:
+            usage: "por favor muestrame el toggl de [nombre usuario]"
+            description: "Muestra el estado de toggl de un usuario en particular en este momento"
   user_time_entry:
     unkwnown: ":confused:"
     entry_not_found: ":confused: Creo que no hay nadie el Platanus con ese nombre"
