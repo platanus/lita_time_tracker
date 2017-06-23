@@ -24,11 +24,11 @@ module Lita
       private
 
       def message_builder
-        @message_builder ||= Lita::Services::MessageBuilder.new(toggl_client)
+        @message_builder ||= Lita::Services::MessageBuilder.new(client)
       end
 
-      def toggl_client
-        @toggl_client ||= Lita::Clients::Toggl.new(ENV['TOGGL_API_KEY'])
+      def client
+        @client ||= Lita::Client.new
       end
     end
   end

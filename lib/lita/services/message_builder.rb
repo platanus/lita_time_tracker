@@ -1,10 +1,10 @@
 module Lita
   module Services
     class MessageBuilder
-      attr_reader :toggl_client
+      attr_reader :client
 
-      def initialize(toggl_client)
-        @toggl_client = toggl_client
+      def initialize(client)
+        @client = client
       end
 
       def general_activity
@@ -32,7 +32,7 @@ module Lita
       end
 
       def current_entries
-        @current_entries ||= toggl_client.users_current_entries
+        @current_entries ||= client.users_current_entries
       end
 
       def entry_to_s(entry)

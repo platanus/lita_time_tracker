@@ -16,3 +16,7 @@ def expect_entry_to_match_data(entry, data)
   expect(entry.active).to eq(data[:active])
   expect(entry.started_at).to eq(data[:started_at])
 end
+
+def set_client_env_var(client_name)
+  allow(ENV).to receive(:fetch).with('TIME_TRACKER_CLIENT', 'invalid').and_return(client_name)
+end
