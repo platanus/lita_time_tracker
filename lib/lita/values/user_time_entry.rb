@@ -2,12 +2,13 @@ class UserTimeEntry
   attr_reader :owner, :user_name, :user_email, :project_name, :description, :active, :started_at
 
   def initialize(data)
-    @user_name = data[:user_name]
-    @user_email = data[:user_email]
+    @data = data
+    @user_name = safe_value(:user_name)
+    @user_email = safe_value(:user_email)
     @owner = user_name || user_email
-    @project_name = data[:project_name]
-    @description = data[:description]
-    @started_at = Time.at(data[:duration].to_i.abs) if data[:duration] && !data[:stop]
+    @project_name = safe_value(:project_name)
+    @description = safe_value(:description)
+    @started_at = safe_value(:started_at)
     @active = !!started_at
   end
 
@@ -21,6 +22,11 @@ class UserTimeEntry
 
   def owned_by?(identifier)
     normalize_string(owner).include?(normalize_string(identifier))
+  end
+
+  def safe_value(attribute)
+    return if @data[attribute].to_s.strip == ""
+    @data[attribute]
   end
 
   private

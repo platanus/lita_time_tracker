@@ -32,7 +32,7 @@ module Lita
       end
 
       def current_entries
-        @current_entries ||= toggl_client.users_current_entires
+        @current_entries ||= toggl_client.users_current_entries
       end
 
       def entry_to_s(entry)

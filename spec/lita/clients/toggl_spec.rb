@@ -2,7 +2,7 @@ require "spec_helper"
 require 'pry'
 
 describe Lita::Clients::Toggl do
-  describe "#users_current_entires" do
+  describe "#users_current_entries" do
     let(:api_token) { "XXX" }
 
     let(:workspaces) do
@@ -94,19 +94,9 @@ describe Lita::Clients::Toggl do
       double(:api_instance, api_methods)
     end
 
-    def expect_entry_to_match_data(entry, data)
-      expect(entry.owner).to eq(data[:owner])
-      expect(entry.user_name).to eq(data[:user_name])
-      expect(entry.user_email).to eq(data[:user_email])
-      expect(entry.project_name).to eq(data[:project_name])
-      expect(entry.description).to eq(data[:description])
-      expect(entry.active).to eq(data[:active])
-      expect(entry.started_at).to eq(data[:started_at])
-    end
-
     before do
       expect(::TogglV8::API).to receive(:new).with(api_token).and_return(api_instance)
-      @result = described_class.new(api_token).users_current_entires
+      @result = described_class.new(api_token).users_current_entries
     end
 
     it { expect(@result.count).to eq(4) }
@@ -137,7 +127,7 @@ describe Lita::Clients::Toggl do
       expect_entry_to_match_data(@result[1], data)
     end
 
-    it "builds inactive time entry when stop attribute is not present in user's activity" do
+    it "builds inactive time entry when stop attribute is present in user's activity" do
       data = {
         owner: "rene@platan.us",
         user_name: nil,

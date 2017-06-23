@@ -7,7 +7,7 @@ module Lita
         @api_token = api_token
       end
 
-      def users_current_entires
+      def users_current_entries
         platanus_users.map do |user|
           activity_data = get_user_activity_data(user["id"])
           data = {
@@ -18,8 +18,7 @@ module Lita
           if !!activity_data
             data[:project_name] = get_project_name(activity_data["project_id"])
             data[:description] = activity_data["description"]
-            data[:duration] = activity_data["duration"]
-            data[:stop] = activity_data["stop"]
+            data[:started_at] = get_acivity_start_time(activity_data)
           end
 
           UserTimeEntry.new(data)
@@ -52,6 +51,10 @@ module Lita
 
       def platanus_workspace_id
         @platanus_workspace_id ||= api.workspaces.first["id"]
+      end
+
+      def get_acivity_start_time(data)
+        Time.at(data["duration"].to_i.abs) if data["duration"] && !data["stop"]
       end
 
       def api

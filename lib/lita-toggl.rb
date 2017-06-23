@@ -3,6 +3,7 @@ require "lita"
 require "redis"
 require "awesome_print"
 require "togglv8"
+require "httparty"
 
 require_rel "lita"
 
