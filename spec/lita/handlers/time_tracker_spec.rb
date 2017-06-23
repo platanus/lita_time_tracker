@@ -1,7 +1,7 @@
 require "spec_helper"
 require 'pry'
 
-describe Lita::Handlers::Toggl, lita_handler: true do
+describe Lita::Handlers::TimeTracker, lita_handler: true do
   let(:general_activity_msg) { double }
   let(:active_users_msg) { double }
   let(:inactive_users_msg) { double }
@@ -21,12 +21,15 @@ describe Lita::Handlers::Toggl, lita_handler: true do
   end
 
   it { is_expected.to route("me muestras la actividad en toggl?") }
+  it { is_expected.to route("me muestras la actividad en harvest?") }
+  it { is_expected.to route("en que wea andan?") }
+  it { is_expected.to route("en qué wea andan?") }
   it { is_expected.to route("quienes togglean?") }
   it { is_expected.to route("quiénes togglean?") }
   it { is_expected.to route("quienes no togglean?") }
   it { is_expected.to route("quiénes no togglean?") }
-  it { is_expected.to route("por favor muestrame el toggl de leandro") }
-  it { is_expected.to route("por favor muéstrame el toggl de leandro") }
+  it { is_expected.to route("me muestras el toggl de leandro?") }
+  it { is_expected.to route("me muestras el harvest de leandro?") }
 
   it "responds with general activity message" do
     send_message("me muestras la actividad en toggl?")
@@ -45,7 +48,7 @@ describe Lita::Handlers::Toggl, lita_handler: true do
 
   it "responds with specific user activity" do
     expect(builder).to receive(:user_activity).with("leandro").and_return(user_activity_msg)
-    send_message("por favor muestrame el toggl de leandro")
+    send_message("me muestras el toggl de leandro?")
     expect(replies.last).to eq(user_activity_msg)
   end
 end

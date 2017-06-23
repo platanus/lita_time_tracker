@@ -1,11 +1,16 @@
+# rubocop:disable Metrics/LineLength
 module Lita
   module Handlers
-    class Toggl < Handler
+    class TimeTracker < Handler
       def self.help_msg(route)
-        { "toggl: #{t("help.#{route}.usage")}" => t("help.#{route}.description") }
+        { "time_tracker: #{t("help.#{route}.usage")}" => t("help.#{route}.description") }
       end
 
-      route(/me muestras la actividad en toggl\?$/i, help: help_msg(:general_activity)) do |r|
+      route(/me muestras la actividad en (toggl|harvest)\?$/i, help: help_msg(:general_activity)) do |r|
+        r.reply(message_builder.general_activity)
+      end
+
+      route(/en qué?e? wea andan\?$/i, help: help_msg(:general_activity)) do |r|
         r.reply(message_builder.general_activity)
       end
 
@@ -17,8 +22,8 @@ module Lita
         r.reply(message_builder.inactive_users)
       end
 
-      route(/por favor mué?e?strame el toggl de ([^\s]+)$/i, help: help_msg(:user_activity)) do |r|
-        r.reply(message_builder.user_activity(r.matches[0][0]))
+      route(/me muestras el (toggl|harvest) de ([^\s]+)\?$/i, help: help_msg(:user_activity)) do |r|
+        r.reply(message_builder.user_activity(r.matches[0][1]))
       end
 
       private

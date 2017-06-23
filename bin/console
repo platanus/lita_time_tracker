@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "./lib/lita-toggl"
+require "./lib/lita_time_tracker"
 require "pry"
 
 Pry.start

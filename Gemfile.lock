@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lita-toggl (0.1.0)
+    lita_time_tracker (0.1.0)
       awesome_print
       httparty
       lita (>= 4.7)
@@ -86,7 +86,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.3)
-  lita-toggl!
+  lita_time_tracker!
   pry-byebug
   rack-test
   rake

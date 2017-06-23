@@ -1,7 +1,7 @@
 es-CL:
   lita:
     handlers:
-      watering_reminder:
+      time_tracker:
         help:
           general_activity:
             usage: "me muestras la actividad en toggl?"

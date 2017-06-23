@@ -1,22 +1,34 @@
-# lita-toggl
+# Lita Time Tracker
 
-Bot sets your Slack status to the given [Toggl](https://toggl.com/)
-
-## Installation
-
-Add lita-toggl to your Lita instance's Gemfile:
-
-``` ruby
-gem "lita-toggl"
-```
+Get Toggle or Harvest information in your Slack.
 
 ## Configuration
 
-TODO: Describe any configuration attributes the plugin exposes.
+To set Toggle as time tracker set the following ENV vars:
+
+- TIME_TRACKER_CLIENT=toggl
+- TOGGL_API_KEY=XXX
+
+To set Harvest as time tracker set the following ENV vars:
+
+- TIME_TRACKER_CLIENT=harvest
+- HARVEST_ACCOUNT_ID=123
+- HARVEST_TOKEN=XXX
 
 ## Usage
 
-TODO: Describe the plugin's features and how to use them.
+In slack, you can ask:
+
+- me muestras la actividad en toggl?
+- me muestras la actividad en harvest?
+- en que wea andan?
+- en qué wea andan?
+- quienes togglean?
+- quiénes togglean?
+- quienes no togglean?
+- quiénes no togglean?
+- me muestras el toggl de leandro?
+- me muestras el harvest de leandro?
 
 ## License
 

@@ -1,10 +1,10 @@
 Gem::Specification.new do |spec|
-  spec.name          = "lita-toggl"
+  spec.name          = "lita_time_tracker"
   spec.version       = "0.1.0"
   spec.authors       = ["Leandro Segovia", "Cristian Moreno"]
   spec.email         = ["leandro@platan.us", "khriztian@platan.us"]
-  spec.description   = "Toggl Slack Status"
-  spec.summary       = "Sets your Slack status to the given toggl"
+  spec.description   = "Get time tracking information in your Slack"
+  spec.summary       = "Get Toggle or Harvest information in your Slack"
   spec.homepage      = "https://platan.us"
   spec.license       = "MIT"
   spec.metadata      = { "lita_plugin_type" => "handler" }
