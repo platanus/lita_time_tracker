@@ -35,6 +35,8 @@ module Lita
       def client
         @client ||= Lita::Client.new
       end
+
+      Lita.register_handler(self)
     end
   end
 end
