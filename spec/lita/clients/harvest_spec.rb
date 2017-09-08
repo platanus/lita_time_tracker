@@ -10,9 +10,10 @@ describe Lita::Clients::Harvest do
   end
 
   describe "#users_current_entries", vcr: { cassette_name: 'harvest-entries' } do 
-    let!(:entry) { client.users_current_entries[0] }
-    it { expect(entry.owner).to eq("René A. Morales") }
-    it { expect(entry.user_email).to eq("rene.morales.sanchez@gmail.com") }
+    let!(:entries) { client.users_current_entries }
+    it { expect(entries[3].owner).to eq("Leandro Segovia") }
+    it { expect(entries[3].description).to eq("Programming: Estructura para almacenar reportes favoritos y comando para chequear alertas") }
+    it { expect(entries[3].user_email).to eq("leandro@platan.us") }
   end
 
   describe "#time_entries", vcr: { cassette_name: 'harvest-time_entries' } do 

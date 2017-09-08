@@ -13,6 +13,7 @@ module Lita
       def users_current_entries
         users.map do |user|
           activity_data = user_activity_data(user["id"])
+          
           data = {
             user_name: user_fullname(user),
             user_email: user["email"]
