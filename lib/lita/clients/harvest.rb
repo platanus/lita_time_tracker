@@ -21,7 +21,7 @@ module Lita
           if !!activity_data
             data[:project_name] = get_project_name(activity_data)
             data[:description] = get_activity_description(activity_data)
-            data[:started_at] = get_acivity_start_time(activity_data)
+            data[:started_at] = get_activity_start_time(activity_data)
           end
 
           UserTimeEntry.new(data)
@@ -59,9 +59,9 @@ module Lita
         end
       end
 
-      def get_acivity_start_time(activity_data)
-        return unless activity_data["started_at"]
-        Time.parse(activity_data["started_at"]).localtime
+      def get_activity_start_time(activity_data)
+        return unless activity_data["started_time"]
+        Time.parse(activity_data["started_time"]).localtime
       end
 
       def get_time_entries
