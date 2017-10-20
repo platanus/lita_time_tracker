@@ -1,4 +1,3 @@
-require "require_all"
 require "lita"
 require "redis"
 require "awesome_print"
