@@ -9,7 +9,7 @@ describe Lita::Services::MessageBuilder do
         user_name: "Khriztian",
         user_email: "khriztian@platan.us",
         description: "Task 2",
-        started_at: Time.at(1495199186)
+        started_at: Time.at(1495199186).utc
       },
       {
         owner: "Leandro",
@@ -26,7 +26,7 @@ describe Lita::Services::MessageBuilder do
         user_name: "Memo",
         user_email: "memo@platan.us",
         project_name: "Proyecto 2",
-        started_at: Time.at(1295216323)
+        started_at: Time.at(1295216323).utc
       }
     ].map do |entry|
       UserTimeEntry.new(entry)
@@ -39,22 +39,21 @@ describe Lita::Services::MessageBuilder do
   before { allow(Date).to receive(:today).and_return(Date.new(2017, 5, 19)) }
 
   describe "#general_activity" do
-    # TODO: this test does not work in Chile timezone
-    # it "returns general activity message" do
-    #   output = <<~EOS
-    #     • *Khriztian* está toggleando :slightly_smiling_face:
-    #     >*Proyecto:* :confused:
-    #     >*Tarea:* Task 2
-    #     >Desde las *10:06 AM* de hoy
-    #     • *Leandro* no está toggleando en este momento :disappointed:
-    #     • *rene@platan.us* no está toggleando en este momento :disappointed:
-    #     • *Memo* está toggleando :slightly_smiling_face:
-    #     >*Proyecto:* Proyecto 2
-    #     >*Tarea:* :confused:
-    #     >Desde el día *16/01/2011* a las *07:18 PM*
-    #   EOS
-    #   expect(srv.general_activity).to eq(output.chomp)
-    # end
+    it "returns general activity message" do
+      output = <<~EOS
+        • *Khriztian* está toggleando :slightly_smiling_face:
+        >*Proyecto:* :confused:
+        >*Tarea:* Task 2
+        >Desde las *01:06 PM* de hoy
+        • *Leandro* no está toggleando en este momento :disappointed:
+        • *rene@platan.us* no está toggleando en este momento :disappointed:
+        • *Memo* está toggleando :slightly_smiling_face:
+        >*Proyecto:* Proyecto 2
+        >*Tarea:* :confused:
+        >Desde el día *16/01/2011* a las *10:18 PM*
+      EOS
+      expect(srv.general_activity).to eq(output.chomp)
+    end
   end
 
   describe "#active_users" do
