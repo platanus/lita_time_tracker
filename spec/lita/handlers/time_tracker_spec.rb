@@ -1,5 +1,4 @@
 require "spec_helper"
-require 'pry'
 
 describe Lita::Handlers::TimeTracker, lita_handler: true do
   let(:general_activity_msg) { double }
