@@ -5,15 +5,13 @@ require "awesome_print"
 require "togglv8"
 require "httparty"
 
-require_rel "lita"
-
 Lita.load_locales Dir[File.expand_path(
   File.join("..", "..", "locales", "*.yml"), __FILE__
 )]
+
+require_rel "lita"
 
 Lita::Handlers::TimeTracker.template_root File.expand_path(
   File.join("..", "..", "templates"),
   __FILE__
 )
-
-I18n.locale = "es-CL"
