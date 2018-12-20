@@ -11,9 +11,9 @@ module Lita
       end
 
       def users_current_entries
-        users.map do |user|
+        active_users.map do |user|
           activity_data = user_activity_data(user["id"])
-          
+
           data = {
             user_name: user_fullname(user),
             user_email: user["email"]
@@ -57,7 +57,7 @@ module Lita
         result = get("time_entries")
         return [] unless result
         @time_entries = result["time_entries"]
-      end      
+      end
 
       def activity_description(activity_data)
         [
@@ -84,6 +84,10 @@ module Lita
       def activity_start_time(activity_data)
         return unless activity_data["started_time"]
         Time.parse(activity_data["started_time"]).localtime
+      end
+
+      def active_users
+        users.select { |user| user['is_active'] }
       end
     end
   end
