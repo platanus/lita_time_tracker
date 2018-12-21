@@ -41,13 +41,13 @@ describe Lita::Services::MessageBuilder do
   describe "#general_activity" do
     it "returns general activity message" do
       output = <<~EOS
-        • *Khriztian* está toggleando :slightly_smiling_face:
+        • *Khriztian* está trackeando :slightly_smiling_face:
         >*Proyecto:* :confused:
         >*Tarea:* Task 2
         >Desde las *01:06 PM* de hoy
-        • *Leandro* no está toggleando en este momento :disappointed:
-        • *rene@platan.us* no está toggleando en este momento :disappointed:
-        • *Memo* está toggleando :slightly_smiling_face:
+        • *Leandro* no está trackeando en este momento :disappointed:
+        • *rene@platan.us* no está trackeando en este momento :disappointed:
+        • *Memo* está trackeando :slightly_smiling_face:
         >*Proyecto:* Proyecto 2
         >*Tarea:* :confused:
         >Desde el día *16/01/2011* a las *10:18 PM*
