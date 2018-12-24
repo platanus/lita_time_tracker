@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Lita::Clients::Harvest do
   let(:client) do
@@ -6,29 +6,26 @@ describe Lita::Clients::Harvest do
   end
 
   before do
-    allow_any_instance_of(described_class).to receive(:to_param).and_return("?to=2017-10-20T23:59:59Z")
+    allow_any_instance_of(described_class).to \
+      receive(:to_param).and_return('?to=2018-12-24T23:59:59Z')
   end
 
-  describe "#users_current_entries", vcr: { cassette_name: 'harvest-entries' } do
-    let!(:entries) { client.users_current_entries }
+  describe '#users_current_entries' do
+    context 'with no inactive users', vcr: { cassette_name: 'harvest-entries-active-users' } do
+      let(:entries) { client.users_current_entries }
+      it { expect(entries.count).to eq(5) }
+      it { expect(entries.last.owner).to eq('Felipe Domínguez') }
+      it { expect(entries.last.user_email).to eq('felipe.dominguez@platan.us') }
+      it { expect(entries.last.description).to eq('Project Management') }
+    end
 
-    it { expect(entries.last.owner).to eq('Juan Ignacio Donoso') }
-    it { expect(entries.last.description).to eq('Programming: Google Automatic Deploy to Beta') }
-    it { expect(entries.last.user_email).to eq('juan.ignacio@platan.us') }
-  end
-
-  describe '#time_entries', vcr: { cassette_name: 'harvest-time_entries' } do
-    let!(:entries) { client.send('time_entries') }
-
-    it { expect(entries.count).to eq(100) }
-  end
-
-  describe '#active_users' do
-    let!(:active_users) { client.send('active_users') }
-    let!(:users) { client.send('users') }
-
-    it 'returns only active users' do
-      expect(active_users.count).not_to eq(users.count)
+    context 'with inactive users', vcr: { cassette_name: 'harvest-entries-inactive-users' } do
+      let(:entries) { client.users_current_entries }
+      it { expect(entries.count).to eq(5) }
+      it 'returns only active users entries' do
+        entries_emails = entries.map(&:user_email)
+        expect(entries_emails).not_to include('jose@platan.us')
+      end
     end
   end
 end
