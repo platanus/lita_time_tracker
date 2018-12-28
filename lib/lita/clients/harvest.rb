@@ -13,7 +13,6 @@ module Lita
       def users_current_entries
         active_users.map do |user|
           activity_data = user_activity_data(user["id"])
-
           data = {
             user_name: user_fullname(user),
             user_email: user["email"]
@@ -22,7 +21,8 @@ module Lita
           if !!activity_data
             data[:project_name] = project_name(activity_data)
             data[:description] = activity_description(activity_data)
-            data[:started_at] = activity_start_time(activity_data)
+            data[:time_elapsed] = activity_time(activity_data)
+            data[:is_active] = activity_data['is_running']
           end
 
           UserTimeEntry.new(data)
@@ -77,13 +77,13 @@ module Lita
 
       def user_activity_data(user_id)
         time_entries.find do |entry|
-          entry["user"]["id"] == user_id
+          entry["user"]["id"] == user_id && entry['is_running']
         end
       end
 
-      def activity_start_time(activity_data)
-        return unless activity_data["started_time"]
-        Time.parse(activity_data["started_time"]).localtime
+      def activity_time(activity_data)
+        return unless activity_data['hours']
+        Time.at(activity_data['hours'] * 3600).utc.strftime('%H:%M')
       end
 
       def active_users

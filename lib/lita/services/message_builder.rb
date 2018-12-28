@@ -41,24 +41,13 @@ module Lita
             owner: entry.owner,
             project_name: format_string(entry.project_name),
             description: format_string(entry.description),
-            started_at: started_at_to_s(entry.started_at)
+            time_elapsed: entry.time_elapsed
           }
 
           I18n.t("user_time_entry.active_msg.main", locals)
         else
           I18n.t("user_time_entry.inactive_msg", owner: entry.owner)
         end
-      end
-
-      def started_at_to_s(started_at)
-        time_str = started_at.strftime("%I:%M %p")
-
-        if Date.today == started_at.to_date
-          return I18n.t("user_time_entry.active_msg.time", time: time_str)
-        end
-
-        date_str = started_at.strftime("%d/%m/%Y")
-        I18n.t("user_time_entry.active_msg.date", date: date_str, time: time_str)
       end
 
       def format_string(str)
