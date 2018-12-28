@@ -1,5 +1,5 @@
 class UserTimeEntry
-  attr_reader :owner, :user_name, :user_email, :project_name, :description, :active, :started_at
+  attr_reader :owner, :user_name, :user_email, :project_name, :description, :active, :time_elapsed
 
   def initialize(data)
     @user_name = safe_value(data[:user_name])
@@ -7,16 +7,16 @@ class UserTimeEntry
     @owner = user_name || user_email
     @project_name = safe_value(data[:project_name])
     @description = safe_value(data[:description])
-    @started_at = safe_value(data[:started_at])
-    @active = !!started_at
+    @time_elapsed = safe_value(data[:time_elapsed])
+    @active = safe_value(data[:is_active])
   end
 
   def active?
-    !!active
+    !!@active
   end
 
   def inactive?
-    !active
+    !@active
   end
 
   def owned_by?(identifier)
