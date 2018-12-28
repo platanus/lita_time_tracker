@@ -14,11 +14,11 @@ module Lita
         r.reply(message_builder.general_activity)
       end
 
-      route(/quié?e?nes togglean\?$/i, help: help_msg(:active_users)) do |r|
+      route(/quié?e?nes trackean\?$/i, help: help_msg(:active_users)) do |r|
         r.reply(message_builder.active_users)
       end
 
-      route(/quié?e?nes no togglean\?$/i, help: help_msg(:inactive_users)) do |r|
+      route(/quié?e?nes no trackean\?$/i, help: help_msg(:inactive_users)) do |r|
         r.reply(message_builder.inactive_users)
       end
 
