@@ -16,7 +16,12 @@ describe Lita::Clients::Harvest do
       it { expect(entries.count).to eq(5) }
       it { expect(entries.last.owner).to eq('Felipe Domínguez') }
       it { expect(entries.last.user_email).to eq('felipe.dominguez@platan.us') }
-      it { expect(entries.last.description).to eq('Project Management') }
+      it {
+        expect(entries.last.description)
+          .to eq('Programming: Fix test: Al obtener los usuarios de
+                  harvest, solo deben mostrarse los usuarios activos')
+      }
+      it { expect(entries.last.time_elapsed).not_to be(nil) }
     end
 
     context 'with inactive users', vcr: { cassette_name: 'harvest-entries-inactive-users' } do
