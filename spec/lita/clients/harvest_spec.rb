@@ -17,6 +17,7 @@ describe Lita::Clients::Harvest do
       it { expect(entries.last.owner).to eq('Felipe Domínguez') }
       it { expect(entries.last.user_email).to eq('felipe.dominguez@platan.us') }
       it { expect(entries.last.description).to eq('Project Management') }
+      it { expect(entries.last.time_elapsed).not_to be(nil) }
     end
 
     context 'with inactive users', vcr: { cassette_name: 'harvest-entries-inactive-users' } do

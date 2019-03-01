@@ -23,10 +23,10 @@ describe Lita::Handlers::TimeTracker, lita_handler: true do
   it { is_expected.to route("me muestras la actividad en harvest?") }
   it { is_expected.to route("en que wea andan?") }
   it { is_expected.to route("en qué wea andan?") }
-  it { is_expected.to route("quienes togglean?") }
-  it { is_expected.to route("quiénes togglean?") }
-  it { is_expected.to route("quienes no togglean?") }
-  it { is_expected.to route("quiénes no togglean?") }
+  it { is_expected.to route("quienes trackean?") }
+  it { is_expected.to route("quiénes trackean?") }
+  it { is_expected.to route("quienes no trackean?") }
+  it { is_expected.to route("quiénes no trackean?") }
   it { is_expected.to route("me muestras el toggl de leandro?") }
   it { is_expected.to route("me muestras el harvest de leandro?") }
 
@@ -36,12 +36,12 @@ describe Lita::Handlers::TimeTracker, lita_handler: true do
   end
 
   it "responds with active users message" do
-    send_message("quienes togglean?")
+    send_message("quienes trackean?")
     expect(replies.last).to eq(active_users_msg)
   end
 
   it "responds with inactive users message" do
-    send_message("quienes no togglean?")
+    send_message("quienes no trackean?")
     expect(replies.last).to eq(inactive_users_msg)
   end
 
