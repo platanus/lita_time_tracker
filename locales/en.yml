@@ -4,22 +4,20 @@ en:
       time_tracker:
         help:
           general_activity:
-            usage: "me muestras la actividad en toggl?"
+            usage: "me muestras la actividad en harvest?"
             description: "Muestra un listado con información sobre lo que se está trackeando en este momento"
           active_users:
-            usage: "quienes togglean?"
+            usage: "quienes trackean?"
             description: "Muestra un listado de usuarios que están trackeando en este momento"
           inactive_users:
-            usage: "quienes no togglean?"
+            usage: "quienes no trackean?"
             description: "Muestra un listado de usuarios que no están trackeando en este momento"
           inactive_users:
-            usage: "por favor muestrame el toggl de [nombre usuario]"
-            description: "Muestra el estado de toggl de un usuario en particular en este momento"
+            usage: "me muestras el harvest de"
+            description: "Muestra el estado de harvest de un usuario en particular en este momento"
   user_time_entry:
     unkwnown: ":confused:"
     entry_not_found: ":confused: Creo que no hay nadie el Platanus con ese nombre"
     active_msg:
-      main: "• *%{owner}* está trackeando :slightly_smiling_face:\n>*Proyecto:* %{project_name}\n>*Tarea:* %{description}\n>%{started_at}"
-      time: "Desde las *%{time}* de hoy"
-      date: "Desde el día *%{date}* a las *%{time}*"
+      main: "• *%{owner}* está trackeando :slightly_smiling_face:\n>*Proyecto:* %{project_name}\n>*Tarea:* %{description}\n>*Tiempo transcurrido:* %{time_elapsed}"
     inactive_msg: "• *%{owner}* no está trackeando en este momento :disappointed:"
