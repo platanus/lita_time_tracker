@@ -77,7 +77,7 @@ module Lita
 
       def user_activity_data(user_id)
         time_entries.find do |entry|
-          entry["user"]["id"] == user_id
+          entry["user"]["id"] == user_id && entry['is_running']
         end
       end
 
