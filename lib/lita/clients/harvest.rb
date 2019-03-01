@@ -82,8 +82,7 @@ module Lita
       end
 
       def activity_time(activity_data)
-        return unless activity_data['hours']
-        Time.at(activity_data['hours'] * 3600).utc.strftime('%H:%M')
+        Time.at(activity_data['hours'] * 3600).utc.strftime('%H:%M') if activity_data['hours']
       end
 
       def active_users
