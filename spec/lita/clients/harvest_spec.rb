@@ -18,8 +18,8 @@ describe Lita::Clients::Harvest do
       it { expect(entries.last.user_email).to eq('felipe.dominguez@platan.us') }
       it {
         expect(entries.last.description)
-          .to eq('Programming: Fix test: Al obtener los usuarios de
-                  harvest, solo deben mostrarse los usuarios activos')
+          .to eq('Programming: Fix test: Al obtener los usuarios de '\
+                  'harvest, solo deben mostrarse los usuarios activos')
       }
       it { expect(entries.last.time_elapsed).not_to be(nil) }
     end
